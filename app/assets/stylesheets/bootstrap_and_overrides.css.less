@@ -1,6 +1,53 @@
 @import "twitter/bootstrap/bootstrap";
 @import "twitter/bootstrap/responsive";
 
+body, html { min-height: 100%; }
+body { font-family: 'Titillium Web', sans-serif; background-color: #ffffff; background-image: url(bg.jpg); background-repeat: no-repeat; background-position: center top; }
+.bajada { padding: 20px 0; text-align: center; margin: 0 auto; font-size: 100px; font-weight: 400; text-shadow: 1px 1px 3px #000; /* Firefox 3.5+, Opera 9+, Safari 1+, Chrome, IE10 */ color: #fff; }
+h2.form-signin-heading { text-align: center; }
+
+
+.form-signin {
+clear: both; 
+max-width: 458px;
+padding: 19px;
+margin: 0 auto 20px;
+background-color: white;
+border: 1px solid #E5E5E5;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+ -webkit-box-shadow: 0px 0px 4px 0px #888; /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+          box-shadow: 0px 0px 4px 0px #888; /* Opera 10.5, IE9+, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  clear: both;
+  color: #fff;
+  margin: 60px 0;
+  text-align: center;
+   text-shadow: 1px 1px 3px #000; /* Firefox 3.5+, Opera 9+, Safari 1+, Chrome, IE10 */ 
+}
+.jumbotron h1 {
+  clear: both;
+  font-size: 72px;
+  line-height: 1;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 60px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+.registro .well_registro input.input-block-level { margin: 10px 0; padding: 10px; height: 50px; }
 // Set the correct sprite paths
 @iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
 @iconWhiteSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings-white");
