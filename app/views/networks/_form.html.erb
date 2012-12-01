@@ -1,17 +1,45 @@
-<%= form_for(@network) do |f| %>
-  <% if @network.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@network.errors.count, "error") %> prohibited this network from being saved:</h2>
+<script type="text/javascript" language="javascript" charset="utf-8">
+  $(function(){
+      $("#add_friend_form").live('submit', function(){
+        $.ajax({
+            type: 'POST',
+            url: '/network/add_friend.json',
+            data: {
+              utf8: '✓',
+              authenticity_token: $("input[name=authenticity_token]").val(),
+              'user' : {
+                      'email':$("#add_friend_form #user_email").val()
+                      },
+              'network_id': <%= @network.id %>
+              },
+              error: function(data){
+                alert("MALO");
+                }
+                ,
+                success: function(data){
+                $("#add_friend_form #user_email").val("");
+                $("#add_friend_form .friends").append("<li>"+ data.email +"</li>");
 
-      <ul>
-      <% @network.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+                }
 
-  <div class="actions">
-    <%= f.submit %>
+          });
+        return false;
+        });
+  });
+</script>
+
+<%= form_for :user, :html => { :class => 'form-horizontal', :id => "add_friend_form" } do |f| %>
+
+  <div class="friends">
+    <% for friend in @network.users %>
+      <li><%= friend.email %></li>
+    <% end %>
+
   </div>
-<% end %>
+  <%= f.text_field :email %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                networks_path, :class => 'btn' %>
+  </div>
+  <% end %>

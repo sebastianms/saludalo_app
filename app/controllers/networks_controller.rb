@@ -80,4 +80,23 @@ class NetworksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_friend
+    email = params[:user][:email]
+    network_id = params[:network_id]
+    n = Network.find(network_id)
+    puts n
+    u = User.find_by_email(email)
+    if u.nil?
+      u = User.new(:email =>email )
+      u = nil unless u.save
+    end
+    unless n.nil? && u.nil?
+      n.users << u
+      n.save
+    end
+    respond_to do |format|
+      format.json { render json: u, status: u.nil? ? 500 : 200 }
+    end
+  end
 end

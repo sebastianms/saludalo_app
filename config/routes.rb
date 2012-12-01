@@ -15,6 +15,8 @@ Saludalo::Application.routes.draw do
   post "login", :to => "application#login"
   post "logout", :to => "application#logout"
 
+  post "/network/add_friend", :to => "networks#add_friend"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

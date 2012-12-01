@@ -1,5 +1,23 @@
-<h1>New network</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', networks_path %>
+<%- model_class = Network -%>
+<script type="text/javascript" language="javascript" charset="utf-8">
+  $(function(){
+      $("#add_friend_form").live('submit', function(){
+        $.ajax({
+            type: 'POST',
+            url: '/network/add_friend.json',
+            data: {
+              utf8: '✓',
+              authenticity_token: 'FOO',
+              'user' : {
+                      'email': 'BAR'
+              }
+            }
+          });
+        });
+  });
+</script>
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
+                                 :default => "New #{model_class.model_name.human}") %></h1>
+</div>
+<%= render :partial => 'form' %>
