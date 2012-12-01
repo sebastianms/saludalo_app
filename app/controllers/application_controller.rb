@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     user = User.find_by_email(params[:email])
     if user
       session[:user_id] = user.id
+      redirect_to root_path
     else
       redirect_to root_path
     end

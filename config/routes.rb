@@ -9,7 +9,8 @@ Saludalo::Application.routes.draw do
 
 
   resources :users
-
+  post "login", :to => "application#login"
+  post "logout", :to => "application#logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
