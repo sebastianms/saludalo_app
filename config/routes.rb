@@ -10,6 +10,8 @@ Saludalo::Application.routes.draw do
 
   resources :users
 
+  get 'register' => 'public#register', :as => 'register'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
