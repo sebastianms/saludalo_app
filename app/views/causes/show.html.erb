@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Cause -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>User:</b>
-  <%= @cause.user_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @cause.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:owner_id) %>:</strong></dt>
+  <dd><%= @cause.owner_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:network_id) %>:</strong></dt>
+  <dd><%= @cause.network_id %></dd>
+</dl>
 
-<p>
-  <b>Owner:</b>
-  <%= @cause.owner_id %>
-</p>
-
-<p>
-  <b>Network:</b>
-  <%= @cause.network_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_cause_path(@cause) %> |
-<%= link_to 'Back', causes_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              causes_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_cause_path(@cause), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              cause_path(@cause),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
