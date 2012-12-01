@@ -12,6 +12,8 @@ Saludalo::Application.routes.draw do
 
   get 'register' => 'public#register', :as => 'register'
 
+  post "login", :to => "application#login"
+  post "logout", :to => "application#logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
