@@ -1,20 +1,25 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = UserNetwork -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>User:</b>
-  <%= @user_network.user_id %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
+  <dd><%= @user_network.user_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:network_id) %>:</strong></dt>
+  <dd><%= @user_network.network_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @user_network.status %></dd>
+</dl>
 
-<p>
-  <b>Network:</b>
-  <%= @user_network.network_id %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @user_network.status %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_network_path(@user_network) %> |
-<%= link_to 'Back', user_networks_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              user_networks_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_user_network_path(@user_network), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              user_network_path(@user_network),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
