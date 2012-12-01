@@ -10,6 +10,8 @@ Saludalo::Application.routes.draw do
 
   resources :users
 
+  root :to => 'public#register'
+
   get 'register' => 'public#register', :as => 'register'
 
   post "login", :to => "application#login"
@@ -66,7 +68,6 @@ Saludalo::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'public#index'
 
   # See how all your routes lay out with "rake routes"
 
