@@ -22,16 +22,17 @@
   </div>
 </div>
 
-
 <div class="jumbotron">
   <h1>Salúdalo</h1>
   <h1 class="bajada">Super awesome marketing speak!</h1>
   <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 </div>
 
-<form class="form-signin form-inline well_registro">
-  <input type="text" class="input-block-level" placeholder="Nombre">
-  <input type="text" class="input-block-level" placeholder="Email">
-  <input type="password" class="input-block-level" placeholder="Clave">
-  <a class="btn btn-large btn-success" href="#">Regístrate</a>
-</form>
+<%= form_tag(register_path, :method => 'post', :class => 'form-signin form-inline well_registro') do %>
+  <%= text_field_tag 'name','',:class => 'input-block-level', :placeholder => 'Nombre' %>
+  <%= text_field_tag 'email','',:class => 'input-block-level', :placeholder => 'Email' %>
+  <%= text_field_tag 'password','',:class => 'input-block-level', :placeholder => 'Clave' %>
+  <%= text_field_tag 'confirm_password','',:class => 'input-block-level', :placeholder => 'Repite tu clave' %>
+  <%= submit_tag 'Regístrate', :class => 'btn btn-large btn-success' %>
+<% end -%>
+

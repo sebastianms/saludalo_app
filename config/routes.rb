@@ -12,8 +12,8 @@ Saludalo::Application.routes.draw do
 
   root :to => 'public#register'
 
-  get 'register' => 'public#register', :as => 'register'
-
+  # get 'register' => 'public#register', :as => 'register'
+  post 'register' => 'users#create', :as => 'register'
   post "login", :to => "application#login"
   post "logout", :to => "application#logout"
 
