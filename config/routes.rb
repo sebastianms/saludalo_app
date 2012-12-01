@@ -1,11 +1,11 @@
 Saludalo::Application.routes.draw do
+  resources :causes
+
+
   resources :user_networks
 
 
   resources :networks
-
-
-  resources :cases
 
 
   resources :users

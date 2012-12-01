@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @cause.user_id %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @cause.owner_id %>
+</p>
+
+<p>
+  <b>Network:</b>
+  <%= @cause.network_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_cause_path(@cause) %> |
+<%= link_to 'Back', causes_path %>
