@@ -1,4 +1,16 @@
 Saludalo::Application.routes.draw do
+  resources :user_networks
+
+
+  resources :networks
+
+
+  resources :cases
+
+
+  resources :users
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

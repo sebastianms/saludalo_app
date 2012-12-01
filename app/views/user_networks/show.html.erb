@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_network.user_id %>
+</p>
+
+<p>
+  <b>Network:</b>
+  <%= @user_network.network_id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @user_network.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_network_path(@user_network) %> |
+<%= link_to 'Back', user_networks_path %>
