@@ -31,21 +31,28 @@ $(function(){
 });
 </script>
 
-<%= form_for :network, :html => { :class => 'form-inline span3' } do |f| %>
-
-<ul class="friends">
-  <% for friend in @network.users %>
-  <li><%= friend.email %></li>
-  <% end %>
-</ul>
+<div class="row-fluid">
+<div class="span6">
+<%= form_for :network, :html => { :class => 'form-inline' } do |f| %>
 
   <legend>Ingresa el mail de tu amigo</legend>
   <fieldset>
     <div id="add_friend_form">
     <%= text_field_tag :email, '', :class => 'input-block-level',:placeholder =>  'Email' %>
     <%= submit_tag "Agregar", :class => 'btn btn-primary btn-large' %>
+    <%= link_to "Continuar", tasks_cause_path(session[:cause_id]), :class => 'btn btn-secondary btn-large' %>
     </div>
   </fieldset>
-  <%= link_to "Continuar", tasks_cause_path(session[:cause_id]) %>
+</div>
+
+<div class="span6">
+  <legend>Amigos Registrados</legend>
+  <ul class="friends">
+    <% for friend in @network.users %>
+    <li><%= friend.email %></li>
+    <% end %>
+  </ul>
+</div>  
+</div>  
 
 <% end %>

@@ -1,21 +1,40 @@
-<%= form_for :task, :html => { :id => "add_task_form", :class => 'form-horizontal', :style => "display:none"} do |f| %>
+
+<legend>Ingresa diversas tareas a tu amigo</legend>
+<ul id="myTab circulos" class="nav nav-tabs">
+  <li class="active color_uno"><a href="#uno" data-toggle="tab">Cosas Cotidianas</a></li>
+  <li class="color_dos"><a href="#dos" data-toggle="tab">Pequeñas Metas</a></li>
+  <li class="color_tres"><a href="#tres" data-toggle="tab">Actividades Recreativas</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade in active" id="uno">
+    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+  </div>
+  <div class="tab-pane fade" id="dos">
+    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+  </div>
+  <div class="tab-pane fade" id="tres">
+    <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</p>
+  </div>
+</div>
+<br><br>
+<%= form_for :task, :html => { :id => "add_task_form", :class => 'form-horizontal span6 form_tareas', :style => "display:none"} do |f| %>
 <%= f.hidden_field :user_id,:value => current_user.id, :class => 'number_field' %>
 <div class="control-group">
   <%= f.label :description, "Descripción de la Tarea", :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :description, :class => 'text_field', :id => 'task_description' %>
+    <%= f.text_field :description, :class => 'input-block-level', :id => 'task_description' %>
   </div>
 </div>
 <div class="control-group">
   <%= f.label :start_date, "Fecha de Inicio", :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :start_date, :class => 'datetime_select', :id => 'task_start_date' %>
+    <%= f.text_field :start_date, :class => 'input-block-level datetime_select', :id => 'task_start_date' %>
   </div>
 </div>
 <div class="control-group">
   <%= f.label :final_date, "Fecha de Término", :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :final_date, :class => 'datetime_select', :id => 'task_final_date' %>
+    <%= f.text_field :final_date, :class => 'input-block-level datetime_select', :id => 'task_final_date' %>
   </div>
 </div>
 <div class="control-group">
@@ -26,15 +45,15 @@
 </div>
 
 <div class="form-actions">
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= f.submit "Guardar Tarea", :class => 'btn btn-primary btn-large' %>
   <%= link_to "Cancelar",
-  tasks_path, :class => 'btn', :id => 'close_form_add_task'  %>
+  tasks_path, :class => 'btn btn-large', :id => 'close_form_add_task'  %>
 </div>
 <% end %>
-<%= link_to "Nueva Tarea",
+<%= link_to "Ingresar Nueva Tarea",
 new_task_path,
-:id => 'add_task_button', :class => 'btn btn-primary' %>
-
+:id => 'add_task_button', :class => 'btn btn-primary btn-large' %>
+<br><br>
 <div id="task-list">
   <%= render :partial => "task_list" %>
 </div>

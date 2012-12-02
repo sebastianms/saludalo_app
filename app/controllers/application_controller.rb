@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   #before_filter :auth_user_redirect #Descomentar cuando haya pagina de login
-  before_filter :session_test # Comentar cuando haya pagina de Login
+  #before_filter :session_test # Comentar cuando haya pagina de Login
 
   def session_test
     session[:user_id] = User.first.id
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     user = User.find_by_email(params[:email])
     if user
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to new_network_path
     else
       redirect_to root_path
     end

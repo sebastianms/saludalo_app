@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new
     if @user.register(params)
+      session[:user_id] = @user.id
       redirect_to create_cause_path(:user_id => @user.id)
     else
       render root_path

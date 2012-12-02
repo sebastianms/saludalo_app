@@ -20,6 +20,7 @@ Mejoramigo::Application.routes.draw do
 
   # get 'register' => 'public#register', :as => 'register'
   post 'register' => 'users#create', :as => 'register'
+  get 'login_page' => 'public#login_page', :as => 'login_page'
 
   get 'cause' => 'causes#create', :as => 'create_cause'
   get 'causes/:id/tasks' => 'causes#tasks', :as => 'tasks_cause'

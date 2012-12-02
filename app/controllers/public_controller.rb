@@ -5,6 +5,6 @@ class PublicController < ApplicationController
     render "users/new"
   end
 
-  def index
+  def login_page
   end
 end
