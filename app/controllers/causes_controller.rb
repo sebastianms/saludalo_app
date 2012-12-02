@@ -73,4 +73,13 @@ class CausesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def tasks
+    @tasks = Cause.find(params[:id]).tasks
+  end
+  
+  def tasks_list
+    @tasks = Cause.find(params[:id]).tasks
+    render :layout => false
+  end
 end
