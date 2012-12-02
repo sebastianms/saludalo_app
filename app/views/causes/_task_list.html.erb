@@ -14,7 +14,11 @@
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
-    <tr class="task-data">
+      <% if task.status == "done" %>
+        <tr class="task-data alert alert-success">
+      <% else %>
+        <tr class="task-data">
+      <% end %>
       <td><%= task.user.name %></td>
       <td><%= task.title %></td>
       <td><%= task.description %></td>
@@ -36,6 +40,7 @@
         :method => :delete,
         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
         :class => 'btn btn-mini btn-danger' %>
+        <%= link_to "Terminar", complete_task_path(task.id) %>
       </td>
     </tr>
     <% end %>

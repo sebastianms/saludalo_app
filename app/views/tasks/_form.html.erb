@@ -41,7 +41,12 @@ $(function (){
       <%= f.hidden_field :cause_id,:value => @task.cause.id, :class => 'number_field input-block-level' %>
     </div>
   </div>
-
+  <div class="control-group">
+    <%= f.label :mark, "Calificacion" ,:class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :mark, options_for_select([[1, 1], [2, 2],[3,3],[4,4],[5,5]]), :class => 'input-block-level' %>
+    </div>
+  </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary btn-large' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
