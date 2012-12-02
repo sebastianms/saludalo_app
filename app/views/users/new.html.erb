@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Salúdalo</a>
+      <a class="brand" href="#">MejorAmigo</a>
       <div class="nav-collapse collapse">
         <p class="navbar-text pull-right">
          <a href="#" class="navbar-link">Ingresar</a>
@@ -22,17 +22,18 @@
   </div>
 </div>
 
-<div class="jumbotron">
-  <h1>Salúdalo</h1>
-  <h1 class="bajada">Super awesome marketing speak!</h1>
-  <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+<div class="container">
+	<div class="jumbotron">
+	  <h1>MejorAmigo</h1>
+	  <h1 class="bajada">Amigos ayudando a un amigo a mejorarse</h1>
+	  <p class="lead">Esta es una aplicación que te permite juntarte con tus amigos para salvar a un amigo que está con problemas de depresión. Puedes crear actividades, definir metas, ayudar en tareas domésticas, gestionar contactos de familiares y especialistas, entre otras cosas.</p>
+	</div>
 </div>
-
 <%= form_tag(register_path, :method => 'post', :class => 'form-signin form-inline well_registro') do %>
   <%= text_field_tag 'name','',:class => 'input-block-level', :placeholder => 'Nombre', :type => 'text' %>
   <%= text_field_tag 'email','',:class => 'input-block-level', :placeholder => 'Email', :type => 'email' %>
   <%= text_field_tag 'password','',:class => 'input-block-level', :placeholder => 'Clave', :type => 'password' %>
   <%= text_field_tag 'confirm_password','',:class => 'input-block-level', :placeholder => 'Repite tu clave', :type => 'password' %>
-  <%= submit_tag 'Regístrate', :class => 'btn btn-large btn-success' %>
+  <%= submit_tag 'Regístrate', :class => 'btn btn-large btn-primary' %>
 <% end -%>
 
