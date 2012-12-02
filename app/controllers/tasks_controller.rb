@@ -86,7 +86,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.status = "done"
     @task.save
-    redirect_to tasks_cause_path(session[:cause_id])
+    redirect_to tasks_cause_path(current_user.cause)
   end
 
 end
