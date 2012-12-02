@@ -14,45 +14,18 @@ module ApplicationHelper
     end
 
     def califications_icons(mark)
-      case mark
-      when 1
-        html = <<-HTML
+      html = ""
+      5.times do |i|
+        if i < mark 
+          html << <<-HTML
+            <i class="icon-star"></i>
+          HTML
+        else
+          html << <<-HTML
             <i class="icon-star-empty"></i>
-        HTML
-        html.html_safe
-      when 2
-        html = <<-HTML
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-        HTML
-        html.html_safe
-
-      when 3
-        html = <<-HTML
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-        HTML
-        html.html_safe
-
-      when 4
-        html = <<-HTML
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-        HTML
-        html.html_safe
-
-      when 5
-        html = <<-HTML
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-        HTML
-        html.html_safe
+          HTML
+        end
       end
+      html.html_safe
     end
 end

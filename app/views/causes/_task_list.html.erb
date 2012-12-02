@@ -26,11 +26,7 @@
       <td><%= task.final_date %></td>
       <td><%= translate_status task.status %></td>
       <td>
-        <% total = "" %>
-        <% task.mark.times do %>
-          <% total = "*" + total %>
-        <% end %>
-        <%= total %>
+        <%= califications_icons(task.mark) %>
       </td>
       <td>
         <%= link_to "Editar",
