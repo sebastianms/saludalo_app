@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202162051) do
+ActiveRecord::Schema.define(:version => 20121202190202) do
 
   create_table "cases", :force => true do |t|
     t.integer  "user_id"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(:version => 20121202162051) do
     t.integer  "user_id"
     t.integer  "owner_id"
     t.integer  "network_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "affected_name"
   end
 
   create_table "networks", :force => true do |t|
