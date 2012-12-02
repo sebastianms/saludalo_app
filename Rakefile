@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Saludalo::Application.load_tasks
+Mejoramigo::Application.load_tasks

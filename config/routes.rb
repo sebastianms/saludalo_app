@@ -1,4 +1,7 @@
-Saludalo::Application.routes.draw do
+Mejoramigo::Application.routes.draw do
+  resources :tasks
+
+
   resources :causes
 
 
