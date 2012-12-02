@@ -8,7 +8,6 @@ gem 'rails', '3.2.9'
 gem 'sqlite3'
 gem 'nokogiri'
 gem 'scrapi'
-gem 'pg' #PARA HEROKU, BORRAR EN AMBIENTE LOCAL
 
 
 
