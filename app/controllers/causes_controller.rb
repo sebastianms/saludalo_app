@@ -40,17 +40,10 @@ class CausesController < ApplicationController
   # POST /causes
   # POST /causes.json
   def create
-    @cause = Cause.new(params[:cause])
-
-    respond_to do |format|
-      if @cause.save
-        format.html { redirect_to @cause, notice: 'Cause was successfully created.' }
-        format.json { render json: @cause, status: :created, location: @cause }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @cause.errors, status: :unprocessable_entity }
-      end
-    end
+    @cause = Cause.new
+    @cause.register(params)
+    session[:cause_id] = @cause.id
+    redirect_to network_path
   end
 
   # PUT /causes/1

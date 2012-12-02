@@ -17,10 +17,14 @@ Mejoramigo::Application.routes.draw do
 
   # get 'register' => 'public#register', :as => 'register'
   post 'register' => 'users#create', :as => 'register'
+
+  get 'cause' => 'causes#create', :as => 'create_cause'
+
   post "login", :to => "application#login"
   post "logout", :to => "application#logout"
 
-  get '/network', :to => 'networks#index', :as => 'network'
+  # get '/network/:user_id', :to => 'networks#create', :as => 'create_network'
+  get 'network', :to => 'networks#index', :as => 'network'
   post "/network/add_friend", :to => "networks#add_friend"
 
   # The priority is based upon order of creation:

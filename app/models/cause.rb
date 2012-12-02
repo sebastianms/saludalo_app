@@ -3,4 +3,9 @@ class Cause < ActiveRecord::Base
 
 
   has_many :tasks
+  def register(params)
+  	self.user_id = params[:user_id]
+  	self.owner_id = params[:user_id]
+  	return self.save
+  end
 end
