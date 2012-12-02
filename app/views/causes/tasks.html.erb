@@ -82,6 +82,9 @@ new_task_path,
 $(function(){
   $("#add_task_button").click(function(e){
     e.preventDefault();
+    $("#task_description").val(''),
+    $("#task_start_date").val(''),
+    $("#task_final_date").val(''),
     $("#add_task_form").slideToggle();
     $(this).slideToggle();
   });
