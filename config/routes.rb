@@ -1,4 +1,7 @@
 Mejoramigo::Application.routes.draw do
+  resources :therapists
+
+
   resources :tasks
 
 
