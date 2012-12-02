@@ -10,7 +10,7 @@
               'user' : {
                       'email':$("#add_friend_form #user_email").val()
                       },
-              'network_id': <%= @network.id %>
+              'network_id': '<%= @network.id %>'
               },
               error: function(data){
                 alert("MALO");

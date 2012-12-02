@@ -25,7 +25,7 @@ class NetworksController < ApplicationController
   # GET /networks/new.json
   def new
     @network = Network.new
-
+    @network.save
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @network }
