@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MejorAmigo</title>
+  <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
+    <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
+    <%= javascript_include_tag    "bootstrap", :media => "all" %>
+    <%= javascript_include_tag :all %>
+
+  <%= javascript_include_tag "jquery" %>
+  <%= javascript_include_tag "bootstrap-transition" %>
+  <%= javascript_include_tag "bootstrap-alert" %>
+  <%= javascript_include_tag "bootstrap-modal" %>
+  <%= javascript_include_tag "bootstrap-dropdown" %>
+  <%= javascript_include_tag "bootstrap-scrollspy" %>
+  <%= javascript_include_tag "bootstrap-tab" %>
+  <%= javascript_include_tag "bootstrap-tooltip" %>
+  <%= javascript_include_tag "bootstrap-popover" %>
+  <%= javascript_include_tag "bootstrap-button" %>
+  <%= javascript_include_tag "bootstrap-collapse" %>
+  <%= javascript_include_tag "bootstrap-carousel" %>
+  <%= javascript_include_tag "bootstrap-typeahead" %>
+  <%= javascript_include_tag "bootstrap-button" %>
+  <%= javascript_include_tag "modernizr-button" %>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+
+
+
+
+
+  <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <%= csrf_meta_tags %>
+</head>
+<body class="home">
+  
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href=<%= root_path %>>MejorAmigo </a>
+        <div class="nav-collapse collapse">
+          <p class="navbar-text pull-right">
+            <% if current_user %>
+              <a href=<%= logout_path %> class="navbar-link">Salir</a>
+            <% else %>
+              <a href=<%= login_page_path %> class="navbar-link">Ingresar</a>  
+            <% end %>
+          </p>
+          <ul class="nav">
+            <li class="active"><a href=<%= root_path %>>Inicio</a></li>
+          <% if current_user %>
+            <li class="active"><a href="<%= cause_network_path(current_user.cause) %>">Red de apoyo</a></li>
+            <li class="active"><a href="<%= tasks_cause_path(current_user.cause) %>">Tareas</a></li>
+          <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>

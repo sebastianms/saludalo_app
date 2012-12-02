@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   def register(params)
   	self.name = params[:name]
   	self.email = params[:email]
+  	cause = Cause.new
+  	network = Network.new
+  	network.save
+  	cause.network = network
+  	cause.save
+  	self.cause = cause
   	if params[:password] == params[:confirm_password]
   		return self.save
   	else

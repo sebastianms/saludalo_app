@@ -31,6 +31,16 @@ class NetworksController < ApplicationController
       format.json { render json: @network }
     end
   end
+  
+  # GET /networks/new
+  # GET /networks/new.json
+  def current
+    @network = Cause.find(params[:id]).network
+    respond_to do |format|
+      format.html { render "edit"}
+      format.json { render json: @network }
+    end
+  end
 
   # GET /networks/1/edit
   def edit

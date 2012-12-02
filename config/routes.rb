@@ -24,7 +24,8 @@ Mejoramigo::Application.routes.draw do
 
   get 'cause' => 'causes#create', :as => 'create_cause'
   get 'causes/:id/tasks' => 'causes#tasks', :as => 'tasks_cause'
-  get 'causes/:id/tasks_list' => 'causes#tasks_list', :as => 'tasks_list_cause'
+  get 'causes/:id/tasks_list' => 'causes#tasks_list', :as => 'tasks_list_cause' #solo para ajax
+  get 'causes/:id/network' => 'networks#current', :as => 'cause_network'
   match 'complete_task/:id' => "tasks#complete_task", :as => "complete_task"
 
   post "login", :to => "application#login"
