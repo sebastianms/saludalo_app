@@ -4,8 +4,7 @@ $(function(){
   var email = $("#add_friend_form #email");
 
   $("#add_friend_form input[type='submit']").live('click', function(){
-    var spinner = new Spinner(opts).spin($("body")[0]);
-    email.closest(".control-group").removeClass("error");
+    //var spinner = new Spinner(opts).spin($("body")[0]);
     $.ajax({
       type: 'POST',
       url: '/network/add_friend.json',
@@ -15,17 +14,16 @@ $(function(){
         'user' : {
           'email': email.val()
         },
-        'network_id': '<%= @network.id %>'
+        'network_id': <%= @network.id %>
       },
       error: function(data){
-        email.closest(".control-group").addClass("error");
       },
       success: function(data){
         email.val("");
         $("ul.friends").append("<li>"+ data.email +"</li>");
       },
       complete: function(){
-        spinner.stop();
+      //  spinner.stop();
       }
     });
     return false;
@@ -40,31 +38,14 @@ $(function(){
   <li><%= friend.email %></li>
   <% end %>
 </ul>
-<!--
-<div id="add_friend_form">
-  <div class="control-group">
-    <%= label_tag :email, 'Email', :class => 'control-label' %>
-    <div class="controls">
-      <%= text_field_tag :email, '', :class => 'input-block-level' %>
-    </div>
-  </div>
-  <div>
-    <%= submit_tag "Agregar", :class => 'btn btn-info btn-large' %>
-  </div>
-</div>
-
-<div class="form-actions">
-<<<<<<< HEAD
-</div> -->
 
   <legend>Ingresa el mail de tu amigo</legend>
   <fieldset>
     <div id="add_friend_form">
-
     <%= text_field_tag :email, '', :class => 'input-block-level',:placeholder =>  'Email' %>
     <%= submit_tag "Agregar", :class => 'btn btn-primary btn-large' %>
-  </fieldset>
     </div>
-  <%= button_to "Continuar", tasks_cause_path(current_user.cause.id) %>
+  </fieldset>
+  <%= link_to "Continuar", tasks_cause_path(current_user.cause.id) %>
 
 <% end %>

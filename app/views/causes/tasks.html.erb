@@ -1,30 +1,19 @@
-<%- model_class = Task -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
-
 <%= form_for :task, :html => { :id => "add_task_form", :class => 'form-horizontal', :style => "display:none"} do |f| %>
 <%= f.hidden_field :user_id,:value => current_user.id, :class => 'number_field' %>
 <div class="control-group">
-  <%= f.label :title, :class => 'control-label' %>
-  <div class="controls">
-    <%= f.text_field :title, :class => 'text_field', :id => 'task_title' %>
-  </div>
-</div>
-<div class="control-group">
-  <%= f.label :description, :class => 'control-label' %>
+  <%= f.label :description, "Descripción de la Tarea", :class => 'control-label' %>
   <div class="controls">
     <%= f.text_field :description, :class => 'text_field', :id => 'task_description' %>
   </div>
 </div>
 <div class="control-group">
-  <%= f.label :start_date, :class => 'control-label' %>
+  <%= f.label :start_date, "Fecha de Inicio", :class => 'control-label' %>
   <div class="controls">
     <%= f.text_field :start_date, :class => 'datetime_select', :id => 'task_start_date' %>
   </div>
 </div>
 <div class="control-group">
-  <%= f.label :final_date, :class => 'control-label' %>
+  <%= f.label :final_date, "Fecha de Término", :class => 'control-label' %>
   <div class="controls">
     <%= f.text_field :final_date, :class => 'datetime_select', :id => 'task_final_date' %>
   </div>
@@ -38,11 +27,11 @@
 
 <div class="form-actions">
   <%= f.submit nil, :class => 'btn btn-primary' %>
-  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <%= link_to "Cancelar",
   tasks_path, :class => 'btn', :id => 'close_form_add_task'  %>
 </div>
 <% end %>
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to "Nueva Tarea",
 new_task_path,
 :id => 'add_task_button', :class => 'btn btn-primary' %>
 
@@ -66,7 +55,7 @@ $(function(){
   });
   $("#add_task_form input[type='submit']").live('click', function(e){
     e.preventDefault();
-    var spinner = new Spinner(opts).spin($("body")[0]);
+    //var spinner = new Spinner(opts).spin($("body")[0]);
     $.ajax({
       type: 'POST',
       url: '/tasks.json',
@@ -92,24 +81,24 @@ $(function(){
           type: 'GET',
           url: '/causes/'+$("#task_cause_id").val()+'/tasks_list',
           error: function(){
-            
+
           },
           success: function(data) {
             $('#task-list').html(data);
           }
         });
-          
+
       },
       complete: function(){
-        spinner.stop();
+        //spinner.stop();
       }
     });
     return false;
   });
   $('#task_start_date').datepicker({dateFormat: 'dd/mm/yy'});
   $('#task_final_date').datepicker({dateFormat: 'dd/mm/yy'});
-  
+
 });
 
 
-</script>            
+</script>

@@ -200,7 +200,7 @@ en:
   activerecord:
     models:
       user: "Amigo"
-      tasks: "Tareas"
+      task: "Tarea"
       network: "Red de Ayuda"
       cause: "Causa"
     attributes:
