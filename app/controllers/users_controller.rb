@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     @user = User.new
     if @user.register(params)
       session[:user_id] = @user.id
-      redirect_to cause_network_path(:id => @user.cause)
+      redirect_to cause_affected_name_path(:id => @user.cause)
     else
       render root_path
     end
