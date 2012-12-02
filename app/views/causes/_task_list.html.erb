@@ -21,7 +21,13 @@
       <td><%= task.start_date %></td>
       <td><%= task.final_date %></td>
       <td><%= translate_status task.status %></td>
-      <td><%= task.mark %></td>
+      <td>
+        <% total = "" %>
+        <% task.mark.times do %>
+          <% total = "*" + total %>
+        <% end %>
+        <%= total %>
+      </td>
       <td>
         <%= link_to "Editar",
         edit_task_path(task), :class => 'btn btn-mini' %>
