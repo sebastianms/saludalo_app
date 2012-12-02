@@ -1,45 +1,56 @@
 <script type="text/javascript" language="javascript" charset="utf-8">
-  $(function(){
-      $("#add_friend_form").live('submit', function(){
-        $.ajax({
-            type: 'POST',
-            url: '/network/add_friend.json',
-            data: {
-              utf8: '✓',
-              authenticity_token: $("input[name=authenticity_token]").val(),
-              'user' : {
-                      'email':$("#add_friend_form #user_email").val()
-                      },
-              'network_id': '<%= @network.id %>'
-              },
-              error: function(data){
-                alert("MALO");
-                }
-                ,
-                success: function(data){
-                $("#add_friend_form #user_email").val("");
-                $("#add_friend_form .friends").append("<li>"+ data.email +"</li>");
+$(function(){
+  
+  var email = $("#add_friend_form #user_email");
 
-                }
-
-          });
-        return false;
-        });
+  $("#add_friend_form").live('submit', function(){
+    var spinner = new Spinner(opts).spin($("body")[0]);  
+    email.closest(".control-group").removeClass("error");
+    $.ajax({
+      type: 'POST',
+      url: '/network/add_friend.json',
+      data: {
+        utf8: '✓',
+        authenticity_token: $("input[name=authenticity_token]").val(),
+        'user' : {
+          'email': email.val()
+        },
+        'network_id': '<%= @network.id %>'
+      },
+      error: function(data){
+        email.closest(".control-group").addClass("error");
+      },
+      success: function(data){        
+        email.val("");
+        $("#add_friend_form .friends").append("<li>"+ data.email +"</li>");
+      },
+      complete: function(){
+        spinner.stop();
+      }
+    });
+    return false;
   });
+});
 </script>
 
 <%= form_for :user, :html => { :class => 'form-horizontal', :id => "add_friend_form" } do |f| %>
 
-  <div class="friends">
-    <% for friend in @network.users %>
-      <li><%= friend.email %></li>
-    <% end %>
-
-  </div>
-  <%= f.text_field :email %>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                networks_path, :class => 'btn' %>
-  </div>
+<div class="friends">
+  <% for friend in @network.users %>
+  <li><%= friend.email %></li>
   <% end %>
+
+</div>
+<div class="control-group">
+  <%= f.label :email, :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :email, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  networks_path, :class => 'btn' %>
+</div>
+<% end %>

@@ -25,6 +25,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
+    @task.cause = current_user.cause
 
     respond_to do |format|
       format.html # new.html.erb

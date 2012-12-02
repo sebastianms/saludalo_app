@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   #before_filter :auth_user_redirect
+  before_filter :session_test
 
+  def session_test
+    session[:user_id] = User.first.id
+  end
   def auth_user_redirect
     redirect_to root_path if session[:user_id]
   end

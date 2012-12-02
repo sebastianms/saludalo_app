@@ -1,10 +1,5 @@
 <%= form_for @task, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :user_id, :class => 'number_field' %>
-    </div>
-  </div>
+  <%= f.hidden_field :user_id,:value => current_user.id, :class => 'number_field' %>
   <div class="control-group">
     <%= f.label :title, :class => 'control-label' %>
     <div class="controls">
@@ -30,9 +25,8 @@
     </div>
   </div>
   <div class="control-group">
-    <%= f.label :cause_id, :class => 'control-label' %>
     <div class="controls">
-      <%= f.number_field :cause_id, :class => 'number_field' %>
+      <%= f.hidden_field :cause_id,:value => @task.cause.id, :class => 'number_field' %>
     </div>
   </div>
 
