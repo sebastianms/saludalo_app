@@ -13,7 +13,7 @@
         </p>
         <ul class="nav">
           <li class="active"><a href=<%= root_path %>>Inicio</a></li>
-          <li><a href="#about">Quienes Somos</a></li>
+          <li><a href="#about">Quiénes Somos</a></li>
           <li><a href="#contact">Contacto</a></li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -25,14 +25,14 @@
 	<div class="jumbotron">
 	  <h1 class="marca">MejorAmigo</h1>
 	  <h1 class="bajada">Amigos ayudando a un amigo a mejorarse</h1>
-	  <p class="lead">Esta es una aplicación que te permite juntarte con tus amigos para salvar a un amigo que está con problemas de depresión. Puedes crear actividades, definir metas, ayudar en tareas domésticas, gestionar contactos de familiares y especialistas, entre otras cosas.</p>
+	  <p class="lead">Crea una red para ayudar a otros que tengan problemas de depresión</p>
 	</div>
 </div>
 <%= form_tag(register_path, :method => 'post', :class => 'form-signin form-inline well_registro') do %>
-	<legend>Registrate Aquí</legend>
+	<legend>Registro</legend>
   <%= text_field_tag 'name','',:class => 'input-block-level', :placeholder => 'Nombre', :type => 'text' %>
   <%= text_field_tag 'email','',:class => 'input-block-level', :placeholder => 'Email', :type => 'email' %>
-  <%= text_field_tag 'password','',:class => 'input-block-level', :placeholder => 'Clave', :type => 'password' %>
-  <%= text_field_tag 'confirm_password','',:class => 'input-block-level', :placeholder => 'Repite tu clave', :type => 'password' %>
+  <%= text_field_tag 'password','',:class => 'input-block-level', :placeholder => 'Crea una clave', :type => 'password' %>
+  <%= text_field_tag 'confirm_password','',:class => 'input-block-level', :placeholder => 'Repite la clave', :type => 'password' %>
   <%= submit_tag 'Regístrate', :class => 'btn btn-large btn-primary' %>
 <% end -%>
