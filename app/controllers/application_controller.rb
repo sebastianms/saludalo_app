@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
     user = User.find_by_email(params[:email])
     if user
       session[:user_id] = user.id
-      redirect_to new_network_path
+      redirect_to tasks_cause_path(current_cause)
     else
-      redirect_to root_path
+      redirect_to login_page_path
     end
   end
 
@@ -32,6 +32,18 @@ class ApplicationController < ActionController::Base
     user = User.find(session[:user_id])
     if user
       return user
+    else
+      return nil
+    end
+  end
+  
+  helper_method :current_cause
+
+  def current_cause
+    return nil if session[:cause_id].nil?
+    cause = Cause.find(session[:cause_id])
+    if cause
+      return cause
     else
       return nil
     end
