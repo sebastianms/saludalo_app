@@ -20,7 +20,7 @@
 </div>
 <div class="control-group">
   <div class="controls">
-    <%= f.hidden_field :cause_id,:value => current_user.cause.id, :class => 'number_field', :id => 'task_cause_id' %>
+    <%= f.hidden_field :cause_id,:value => session[:cause_id], :class => 'number_field', :id => 'task_cause_id' %>
     <%= f.hidden_field :user_id,:value => current_user.id, :class => 'number_field', :id => 'task_user_id' %>
   </div>
 </div>

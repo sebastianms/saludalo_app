@@ -26,7 +26,7 @@ Mejoramigo::Application.routes.draw do
   get 'causes/:id/tasks_list' => 'causes#tasks_list', :as => 'tasks_list_cause'
 
   post "login", :to => "application#login"
-  post "logout", :to => "application#logout"
+  match "logout", :to => "application#logout"
 
   # get '/network/:user_id', :to => 'networks#create', :as => 'create_network'
   post "/network/add_friend", :to => "networks#add_friend"

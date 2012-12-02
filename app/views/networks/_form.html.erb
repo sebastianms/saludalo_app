@@ -46,6 +46,6 @@ $(function(){
     <%= submit_tag "Agregar", :class => 'btn btn-primary btn-large' %>
     </div>
   </fieldset>
-  <%= link_to "Continuar", tasks_cause_path(current_user.cause.id) %>
+  <%= link_to "Continuar", tasks_cause_path(session[:cause_id]) %>
 
 <% end %>
