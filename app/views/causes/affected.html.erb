@@ -1,0 +1,12 @@
+<h2>¿A quién apoyarás?</h2>
+
+ <%= form_for cause_affected_name_path, :html => { :class => 'form-horizontal' } do |f| %>
+
+   <legend>Ingresa el nombre de tu amigo</legend>
+   <fieldset>
+     <%= text_field_tag :affected_name, '', :class => 'input-block-level span5',:placeholder =>  'Nombre Completo' %>
+     <div>
+     <%= submit_tag "Continuar", :class => 'btn btn-primary btn-large' %>
+     </div>
+   </fieldset>
+ <% end %>
