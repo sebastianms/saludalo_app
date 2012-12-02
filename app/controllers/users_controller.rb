@@ -42,19 +42,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new
     if @user.register(params)
-      redirect_to network_path
+      redirect_to create_cause_path(:user_id => @user.id)
     else
       render root_path
     end
-    # respond_to do |format|
-    #   if @user.save
-    #     format.html { redirect_to @user, notice: 'User was successfully created.' }
-    #     format.json { render json: @user, status: :created, location: @user }
-    #   else
-    #     format.html { render action: "new" }
-    #     format.json { render json: @user.errors, status: :unprocessable_entity }
-    #   end
-    # end
   end
 
   # PUT /users/1
