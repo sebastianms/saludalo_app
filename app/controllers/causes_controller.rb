@@ -42,7 +42,6 @@ class CausesController < ApplicationController
   def create
     @cause = Cause.new
     @cause.register(params)
-    session[:cause_id] = @cause.id
     redirect_to new_network_path
   end
 

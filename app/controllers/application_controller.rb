@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  #before_filter :auth_user_redirect #Descomentar cuando haya pagina de login
-  #before_filter :session_test # Comentar cuando haya pagina de Login
 
   def session_test
     session[:user_id] = User.first.id
