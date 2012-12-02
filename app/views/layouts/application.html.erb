@@ -13,8 +13,47 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="interior">
+ 
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#">MejorAmigo </a>
+      <div class="nav-collapse collapse">
+        <p class="navbar-text pull-right">
+         Victor Baeza | <a href="#" class="navbar-link">Salir</a>
+        </p>
+        <ul class="nav">
+          <li class="active"><a href="#">Inicio</a></li>
+          <li><a href="#about">Quienes Somos</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </div>
+</div>
 
-<%= yield %>
+
+<div class="jumbotron">
+  <h1 class="bajada">Amigos ayudando a un amigo a mejorarse</h1>
+    <p class="lead">Esta es una aplicación que te permite juntarte con tus amigos para salvar a un amigo que está con problemas de depresión. Puedes crear actividades, definir metas, ayudar en tareas domésticas, gestionar contactos de familiares y especialistas, entre otras cosas.</p>
+</div>
+
+<div class="container contenido_interior">
+  <div class="row">
+    <div class="span12">
+	  <%= yield %>
+	</div>
+  </div>
+</div>
+
+<footer>
+	<p>© MejorAmigo 2012</p>
+</footer>
 
 <br>
 <br>
