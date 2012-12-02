@@ -1,13 +1,13 @@
-<h1>Listing therapists</h1>
+<legend>Lista de Especialistas</legend>
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Phone</th>
+    <th>Nombre</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
     <th>Email</th>
-    <th>Speciality</th>
-  </tr>
+    <th>Especialidad</th>
+    <th>Calificación</th>
 
 <% @therapists.each do |therapist| %>
   <tr>
@@ -16,6 +16,7 @@
     <td><%= therapist.phone %></td>
     <td><%= therapist.email %></td>
     <td><%= therapist.speciality %></td>
+    <td><%= califications_icons(rand(4)+1) %></td>   
   </tr>
 <% end %>
 </table>
