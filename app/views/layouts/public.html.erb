@@ -3,7 +3,6 @@
 <head>
   <title>Saludalo</title>
   <!-- <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"> -->
-  <link rel="shortcut icon" href="ico/favicon.ico">
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
@@ -17,6 +16,21 @@
 <body class="registro">
 
 <%= yield %>
+
+<%= javascript_include_tag "jquery.flexslider" %>
+<script type="text/javascript">
+  $(function(){
+    SyntaxHighlighter.all();
+  });
+  $(window).load(function(){
+    $('.flexslider').flexslider({
+      animation: "slide",
+      start: function(slider){
+        $('body').removeClass('loading');
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
