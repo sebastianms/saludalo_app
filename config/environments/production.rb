@@ -3,9 +3,23 @@ Mejoramigo::Application.configure do
 
   # Code is not reloaded between requests
   # config.assets.precompile += %w( bootstrap.css )
-  #config.assets.precompile += %w( bootstrap.css, bootstrap-responsive.css )
   config.cache_classes = true
 
+  config.assets.precompile << Proc.new { |path|
+    if path =~ /\.(css|js)\z/
+      full_path = Rails.application.assets.resolve(path).to_path
+      app_assets_path = Rails.root.join('app', 'assets').to_path
+      if full_path.starts_with? app_assets_path
+        puts "including asset: " + full_path
+        true
+      else
+        puts "excluding asset: " + full_path
+        false
+      end
+    else
+      false
+    end
+  }
   # Full error reports are disabled and caching is turned on
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -14,13 +28,13 @@ Mejoramigo::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = false
+  config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Generate digests for assets URLs
-  config.assets.digest = false
+  config.assets.digest = true
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -55,7 +69,6 @@ Mejoramigo::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
-  config.assets.enabled = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
