@@ -2,14 +2,15 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Address</th>
-    <th>Phone</th>
+    <th>Nombre</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
     <th>Email</th>
-    <th>Speciality</th>
+    <th>Especialidad</th>
+    <th>Calificación</th>
+<!--     <th></th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th></th> -->
   </tr>
 
 <% @therapists.each do |therapist| %>
@@ -19,9 +20,10 @@
     <td><%= therapist.phone %></td>
     <td><%= therapist.email %></td>
     <td><%= therapist.speciality %></td>
-    <td><%= link_to 'Show', therapist %></td>
+    <td><%= califications_icons(rand(4)+1) %></td>   
+<!--     <td><%= link_to 'Show', therapist %></td>
     <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
-    <td><%= link_to 'Destroy', therapist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', therapist, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
   </tr>
 <% end %>
 </table>
