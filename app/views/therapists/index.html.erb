@@ -8,10 +8,6 @@
     <th>Email</th>
     <th>Especialidad</th>
     <th>Calificación</th>
-<!--     <th></th>
-    <th></th>
-    <th></th> -->
-  </tr>
 
 <% @therapists.each do |therapist| %>
   <tr>
@@ -21,9 +17,6 @@
     <td><%= therapist.email %></td>
     <td><%= therapist.speciality %></td>
     <td><%= califications_icons(rand(4)+1) %></td>   
-<!--     <td><%= link_to 'Show', therapist %></td>
-    <td><%= link_to 'Edit', edit_therapist_path(therapist) %></td>
-    <td><%= link_to 'Destroy', therapist, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
   </tr>
 <% end %>
 </table>
