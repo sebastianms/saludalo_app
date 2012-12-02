@@ -1,6 +1,6 @@
 <legend>Lista de Especialistas</legend>
 
-<table>
+<table class="table table-striped">
   <tr>
     <th>Nombre</th>
     <th>Dirección</th>
@@ -16,7 +16,7 @@
     <td><%= therapist.phone %></td>
     <td><%= therapist.email %></td>
     <td><%= therapist.speciality %></td>
-    <td style="width:82px"><%= califications_icons(rand(4)+1) %></td>   
+    <td style="width:82px"><%= califications_icons(rand(4)+1) %></td>
   </tr>
 <% end %>
 </table>
