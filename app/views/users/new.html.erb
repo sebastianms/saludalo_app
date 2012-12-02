@@ -29,10 +29,10 @@
 </div>
 
 <%= form_tag(register_path, :method => 'post', :class => 'form-signin form-inline well_registro') do %>
-  <%= text_field_tag 'name','',:class => 'input-block-level', :placeholder => 'Nombre' %>
-  <%= text_field_tag 'email','',:class => 'input-block-level', :placeholder => 'Email' %>
-  <%= text_field_tag 'password','',:class => 'input-block-level', :placeholder => 'Clave' %>
-  <%= text_field_tag 'confirm_password','',:class => 'input-block-level', :placeholder => 'Repite tu clave' %>
+  <%= text_field_tag 'name','',:class => 'input-block-level', :placeholder => 'Nombre', :type => 'text' %>
+  <%= text_field_tag 'email','',:class => 'input-block-level', :placeholder => 'Email', :type => 'email' %>
+  <%= text_field_tag 'password','',:class => 'input-block-level', :placeholder => 'Clave', :type => 'password' %>
+  <%= text_field_tag 'confirm_password','',:class => 'input-block-level', :placeholder => 'Repite tu clave', :type => 'password' %>
   <%= submit_tag 'Regístrate', :class => 'btn btn-large btn-success' %>
 <% end -%>
 
