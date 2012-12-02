@@ -81,4 +81,12 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def complete_task
+    @task = Task.find(params[:id])
+    @task.status = "done"
+    @task.save
+    redirect_to tasks_cause_path(session[:cause_id])
+  end
+
 end
