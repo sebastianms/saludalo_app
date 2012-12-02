@@ -18,19 +18,6 @@
 <%= yield %>
 
 <%= javascript_include_tag "jquery.flexslider" %>
-<script type="text/javascript">
-  $(function(){
-    SyntaxHighlighter.all();
-  });
-  $(window).load(function(){
-    $('.flexslider').flexslider({
-      animation: "slide",
-      start: function(slider){
-        $('body').removeClass('loading');
-      }
-    });
-  });
-</script>
 <br>
 <br>
 <p><%= show_sessions %></p>

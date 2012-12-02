@@ -1,10 +1,10 @@
 <script type="text/javascript" language="javascript" charset="utf-8">
 $(function(){
-  
+
   var email = $("#add_friend_form #email");
 
   $("#add_friend_form input[type='submit']").live('click', function(){
-    var spinner = new Spinner(opts).spin($("body")[0]);  
+    var spinner = new Spinner(opts).spin($("body")[0]);
     email.closest(".control-group").removeClass("error");
     $.ajax({
       type: 'POST',
@@ -20,9 +20,9 @@ $(function(){
       error: function(data){
         email.closest(".control-group").addClass("error");
       },
-      success: function(data){        
+      success: function(data){
         email.val("");
-        $("#add_friend_form .friends").append("<li>"+ data.email +"</li>");
+        $("ul.friends").append("<li>"+ data.email +"</li>");
       },
       complete: function(){
         spinner.stop();
@@ -35,17 +35,17 @@ $(function(){
 
 <%= form_for :network, :html => { :class => 'form-horizontal' } do |f| %>
 
-<div class="friends">
+<ul class="friends">
   <% for friend in @network.users %>
   <li><%= friend.email %></li>
   <% end %>
-</div>
+</ul>
 
 <div id="add_friend_form">
   <div class="control-group" style="float:left">
     <%= label_tag :email, 'Email', :class => 'control-label' %>
     <div class="controls">
-      <%= text_field_tag :email, '', :class => 'text_field' %> 
+      <%= text_field_tag :email, '', :class => 'text_field' %>
     </div>
   </div>
   <div>
