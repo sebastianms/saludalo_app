@@ -54,6 +54,7 @@ $(function(){
 </div>
 
 <div class="form-actions">
+<<<<<<< HEAD
   <%= button_to "Continuar", tasks_cause_path, :class =>"btn btn-large btn-primary" %> 
 </div> -->
 
@@ -65,4 +66,6 @@ $(function(){
     <%= submit_tag "Agregar", :class => 'btn btn-primary btn-large' %>
   </fieldset>
     </div>
+  <%= button_to "Continuar", tasks_cause_path(current_user.cause.id) %>
+
 <% end %>

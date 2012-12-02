@@ -43,7 +43,7 @@ class CausesController < ApplicationController
     @cause = Cause.new
     @cause.register(params)
     session[:cause_id] = @cause.id
-    redirect_to network_path
+    redirect_to new_network_path
   end
 
   # PUT /causes/1
@@ -73,11 +73,11 @@ class CausesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def tasks
     @tasks = Cause.find(params[:id]).tasks
   end
-  
+
   def tasks_list
     @tasks = Cause.find(params[:id]).tasks
     render :layout => false
