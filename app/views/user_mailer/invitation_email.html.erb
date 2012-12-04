@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><strong><%= @cause.affected_name %></strong> necesita tu ayuda</h1>
+    <p>
+      <%= @host.name %> ha creado una red de amigos para apoyar a <%= @cause.affected_name %> y cree
+      que tu debes estar en ella, estas dispuest@?
+    </p>
+    <p>
+      MejorAmigo es una herramienta de apoyo a personas con depresión, mediante
+      sencillas tareas tu puedes hacer una diferencia.
+    </p>
+    <p>
+      Tu nombre de usuario es: <%= @guest.email %>
+    </p>
+    <p>
+      Para ingresar, pincha en el siguiente link: <%= @url %>
+    </p>
+    <p>Gracias por ser parte de esto, tu amigo lo agradecerá!</p>
+  </body>
+</html>

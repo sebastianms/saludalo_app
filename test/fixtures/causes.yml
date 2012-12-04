@@ -4,6 +4,7 @@ one:
   user_id: 1
   owner_id: 1
   network_id: 1
+  affected_name: Afectado
 
 two:
   user_id: 1

@@ -73,6 +73,9 @@ class CausesController < ApplicationController
     end
   end
   
+  # Set Affected Name
+  # POST /causes/:id/affected
+  # GET /causes/:id/affected
   def affected
     if request.post?
       cause = current_user.cause

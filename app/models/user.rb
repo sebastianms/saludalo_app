@@ -22,4 +22,11 @@ class User < ActiveRecord::Base
   		return false
   	end
   end
+  
+  def generate_invitation_token
+    begin
+      token = SecureRandom.urlsafe_base64
+    end while User.where(:invitation_token => token).exists?
+    self.invitation_token = token
+  end
 end

@@ -96,17 +96,18 @@ class NetworksController < ApplicationController
     network_id = params[:network_id]
     n = Network.find(network_id)
     puts n
-    u = User.find_by_email(email)
-    if u.nil?
-      u = User.new(:email =>email )
-      u = nil unless u.save
-    end
-    unless n.nil? && u.nil?
-      n.users << u
+    friend = User.find_by_email(email)
+    friend = User.new(:email =>email ) if friend.nil?      
+    friend.generate_invitation_token
+    UserMailer.invitation_email(current_user, friend, current_user.cause).deliver
+    friend = nil unless friend.save
+    
+    unless n.nil? && friend.nil?
+      n.users << friend
       n.save
     end
     respond_to do |format|
-      format.json { render json: u, status: u.nil? ? 500 : 200 }
+      format.json { render json: friend, status: friend.nil? ? 500 : 200 }
     end
   end
 end
