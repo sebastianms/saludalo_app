@@ -1,13 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-
-  def session_test
-    session[:user_id] = User.first.id
+  before_filter :check_invitation_parameter_on_request
+  
+  def check_invitation_parameter_on_request
+    unless params[:invitation_token].nil?
+      user = User.find_by_invitation_token(params[:invitation_token])
+      unless user.nil?
+        redirect_to edit_user_path(user)
+      end
+    end
   end
-  def auth_user_redirect
-    redirect_to root_path if session[:user_id]
-  end
 
+  # LOGIN methods
   def login
     user = User.find_by_email(params[:email])
     if user
@@ -22,6 +26,10 @@ class ApplicationController < ActionController::Base
     session[:user_id] = nil
     session[:cause_id] = nil
     redirect_to root_path
+  end
+  
+  def auth_user_redirect
+    redirect_to root_path if session[:user_id]
   end
 
   helper_method :current_user
