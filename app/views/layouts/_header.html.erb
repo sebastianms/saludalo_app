@@ -72,6 +72,7 @@
                 <a href=<%= tasks_cause_path(cause.id)%>><%= cause.affected_name %></a>
               </li>
               <% end %>
+              <li><%= link_to "[Ver Todas]",  current_user_causes_path(current_user.id)%>
             </ul>
           </li>
           <!-- Fin Causas -->
