@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   # GET /tasks/new.json
   def new
     @task = Task.new
-    @task.cause = current_user.cause
+    @task.cause = current_cause
 
     respond_to do |format|
       format.html # new.html.erb
@@ -61,7 +61,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to tasks_cause_path(current_user.cause), notice: 'Task was successfully updated.' }
+        format.html { redirect_to tasks_cause_path(current_cause), notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -86,7 +86,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.status = "done"
     @task.save
-    redirect_to tasks_cause_path(current_user.cause)
+    redirect_to tasks_cause_path(current_cause)
   end
 
 end

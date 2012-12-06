@@ -78,9 +78,9 @@ class CausesController < ApplicationController
   # GET /causes/:id/affected
   def affected
     if request.post?
-      cause = current_user.cause
+      cause = current_cause
       cause.affected_name = params[:affected_name]
-      redirect_to cause_network_path(:id => current_user.cause) if cause.save
+      redirect_to cause_network_path(:id => current_cause) if cause.save
     end
   end
 
@@ -92,4 +92,6 @@ class CausesController < ApplicationController
     @tasks = Cause.find(params[:id]).tasks
     render :layout => false
   end
+  
+
 end

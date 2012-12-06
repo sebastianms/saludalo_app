@@ -8,9 +8,9 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
-    <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
-    <%= javascript_include_tag    "bootstrap", :media => "all" %>
-    <%= javascript_include_tag :all %>
+  <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
+  <%= javascript_include_tag    "bootstrap", :media => "all" %>
+  <%= javascript_include_tag :all %>
 
   <%= javascript_include_tag "jquery" %>
   <%= javascript_include_tag "bootstrap-transition" %>
@@ -28,8 +28,8 @@
   <%= javascript_include_tag "bootstrap-button" %>
   <%= javascript_include_tag "modernizr-button" %>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
 
 
 
@@ -39,7 +39,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="home">
-  
+
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container-fluid">
@@ -50,21 +50,47 @@
         </a>
         <a class="brand" href=<%= root_path %>>MejorAmigo </a>
         <div class="nav-collapse collapse">
-          <p class="navbar-text pull-right">
+
+          <ul class="nav pull-right">
             <% if current_user %>
+            <li>
               <a href=<%= logout_path %> class="navbar-link">Salir</a>
-            <% else %>
-              <a href=<%= login_page_path %> class="navbar-link">Ingresar</a>  
-            <% end %>
-          </p>
-          <ul class="nav">
-            <li class="active"><a href=<%= root_path %>>Inicio</a></li>
-          <% if current_user %>
-            <li class="active"><a href="<%= cause_network_path(current_user.cause) %>">Red de apoyo</a></li>
-            <li class="active"><a href="<%= tasks_cause_path(current_user.cause) %>">Tareas</a></li>
+            </li>
+            
+            <!-- Causas -->
+            <li class="dropdown">
+              <a class="dropdown-toggle"
+              data-toggle="dropdown"
+              href="#">
+              Mis Causas
+              <b class="caret"></b>
+            </a>
+
+            <ul class="dropdown-menu">
+              <% current_user.causes.each do |cause| %>
+              <li>
+                <a href="#"><%= cause.affected_name %></a>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <!-- Fin Causas -->
+          
+          <% else %>
+          <li>
+            <a href=<%= login_page_path %> class="navbar-link">Ingresar</a>  
+          </li>
           <% end %>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
+
+        <ul class="nav">
+          <li class="active"><a href=<%= root_path %>>Inicio</a></li>
+          <% if current_user %>
+          <li class="active"><a href="<%= cause_network_path(current_cause) %>">Red de apoyo</a></li>
+          <li class="active"><a href="<%= tasks_cause_path(current_cause) %>">Tareas</a></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
   </div>
+</div>

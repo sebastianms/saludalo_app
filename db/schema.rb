@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204195842) do
+ActiveRecord::Schema.define(:version => 20121206160033) do
 
   create_table "causes", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "owner_id"
     t.integer  "network_id"
     t.datetime "created_at",    :null => false
@@ -22,10 +21,9 @@ ActiveRecord::Schema.define(:version => 20121204195842) do
     t.string   "affected_name"
   end
 
-  create_table "networks", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "cause_id"
+  create_table "causes_users", :id => false, :force => true do |t|
+    t.integer "cause_id"
+    t.integer "user_id"
   end
 
   create_table "tasks", :force => true do |t|
@@ -47,14 +45,6 @@ ActiveRecord::Schema.define(:version => 20121204195842) do
     t.string   "phone"
     t.string   "email"
     t.string   "speciality"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "user_networks", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "network_id"
-    t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

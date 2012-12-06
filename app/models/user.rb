@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :user_networks
-  has_many :users, :through => :user_networks
-  has_one :cause
-  has_many :task
+  has_and_belongs_to_many :causes
+  has_many :tasks
 
   attr_accessible :email, :name, :password
   validates_presence_of :email
@@ -11,11 +9,10 @@ class User < ActiveRecord::Base
   	self.name = params[:name]
   	self.email = params[:email]
   	cause = Cause.new
-  	network = Network.new
-  	network.save
-  	cause.network = network
+  	cause.owner = self
   	cause.save
-  	self.cause = cause
+  	self.causes << cause
+
   	if params[:password] == params[:confirm_password]
   		return self.save
   	else

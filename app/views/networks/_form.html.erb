@@ -13,8 +13,7 @@ $(function(){
         authenticity_token: $("input[name=authenticity_token]").val(),
         'user' : {
           'email': email.val()
-        },
-        'network_id': <%= @network.id %>
+        }
       },
       error: function(data){
       },
@@ -33,14 +32,14 @@ $(function(){
 
 <div class="row-fluid">
 <div class="span6">
-<%= form_for :network, :html => { :class => 'form-inline' } do |f| %>
+<%= form_for :user, :html => { :class => 'form-inline' } do |f| %>
 
   <legend>Ingresa el email del amigo</legend>
   <fieldset>
     <div id="add_friend_form">
     <%= text_field_tag :email, '', :class => 'input-block-level',:placeholder =>  'Email' %>
     <%= submit_tag "Agregar", :class => 'btn btn-primary btn-large' %>
-    <%= link_to "Continuar", tasks_cause_path(current_user.cause), :id => "send_email_to_friends", :class => 'btn btn-secondary btn-large' %>
+    <%= link_to "Continuar", tasks_cause_path(current_cause), :id => "send_email_to_friends", :class => 'btn btn-secondary btn-large' %>
     </div>
   </fieldset>
 </div>
@@ -48,7 +47,7 @@ $(function(){
 <div class="span6">
   <legend>Amigos Registrados</legend>
   <ul class="friends">
-    <% for friend in @network.users %>
+    <% for friend in @friends %>
     <li><%= friend.email %></li>
     <% end %>
   </ul>

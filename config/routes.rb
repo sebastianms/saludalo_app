@@ -1,19 +1,7 @@
 Mejoramigo::Application.routes.draw do
   resources :therapists
-
-
   resources :tasks
-
-
   resources :causes
-
-
-  resources :user_networks
-
-
-  resources :networks
-
-
   resources :users
 
   root :to => 'public#register'
@@ -32,7 +20,6 @@ Mejoramigo::Application.routes.draw do
   post "login", :to => "application#login"
   match "logout", :to => "application#logout"
 
-  # get '/network/:user_id', :to => 'networks#create', :as => 'create_network'
   post "/network/add_friend", :to => "networks#add_friend"
 
   # The priority is based upon order of creation:

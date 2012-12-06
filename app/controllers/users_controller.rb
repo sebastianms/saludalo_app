@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     if @user.register(params)
       session[:user_id] = @user.id
       UserMailer.welcome_email(@user).deliver
-      redirect_to cause_affected_name_path(:id => @user.cause)
+      redirect_to cause_affected_name_path(:id => current_cause)
     else
       render root_path
     end
