@@ -72,13 +72,13 @@ class CausesController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # Set Affected Name
   # POST /causes/:id/affected
   # GET /causes/:id/affected
   def affected
     if request.post?
-      cause = current_cause
+      cause = Cause.find(params[:id]) || current_cause
       cause.affected_name = params[:affected_name]
       redirect_to cause_network_path(:id => current_cause) if cause.save
     end
@@ -92,6 +92,19 @@ class CausesController < ApplicationController
     @tasks = Cause.find(params[:id]).tasks
     render :layout => false
   end
-  
+
+  def current_user_causes
+    @user = User.find(params[:user_id])
+    @causes = @user.causes
+  end
+
+  def add_new_cause
+    session[:cause_id] = nil
+    @cause = Cause.new
+    @cause.users << User.find(params[:user_id])
+    @cause.save
+    redirect_to cause_affected_name_path(@cause.id)
+  end
+
 
 end

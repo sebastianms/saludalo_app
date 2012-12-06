@@ -2,7 +2,11 @@ class PublicController < ApplicationController
 
   def register
     @user = User.new
-    render "users/new"
+    if current_user
+      redirect_to current_user_causes_path(current_user.id)
+    else
+      render "users/new"
+    end
   end
 
   def login_page

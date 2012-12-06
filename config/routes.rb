@@ -11,10 +11,12 @@ Mejoramigo::Application.routes.draw do
   get 'login_page' => 'public#login_page', :as => 'login_page'
 
   get 'cause' => 'causes#create', :as => 'create_cause'
-  match 'causes/:id/affected' => 'causes#affected', :as => 'cause_affected_name'
+  match 'causes(/:id/(/:cause_id))/affected' => 'causes#affected', :as => 'cause_affected_name'
   get 'causes/:id/tasks' => 'causes#tasks', :as => 'tasks_cause'
   get 'causes/:id/tasks_list' => 'causes#tasks_list', :as => 'tasks_list_cause' #solo para ajax
   get 'causes/:id/network' => 'networks#current', :as => 'cause_network'
+  get 'active_causes/:user_id' => 'causes#current_user_causes', :as =>'current_user_causes'
+  get 'add_new_cause/:user_id' => 'causes#add_new_cause', :as => 'add_new_cause'
   match 'complete_task/:id' => "tasks#complete_task", :as => "complete_task"
 
   post "login", :to => "application#login"

@@ -1,0 +1,24 @@
+<%- model_class = Cause -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Protagonista de la causa</th>
+      <th>Operaciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @causes.each do |cause| %>
+      <tr>
+        <td><%= cause.affected_name %></td>
+        <td><%= link_to "Invitar a mas amigos",cause_network_path(cause.id) %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Crear nueva Causa",
+            add_new_cause_path(current_user.id),
+            :class => 'btn btn-primary' %>
