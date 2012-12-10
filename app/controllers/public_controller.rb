@@ -11,4 +11,9 @@ class PublicController < ApplicationController
 
   def login_page
   end
+
+  def delete_session
+    reset_session
+    redirect_to(:back)
+  end
 end

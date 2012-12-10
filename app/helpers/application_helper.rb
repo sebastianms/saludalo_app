@@ -24,4 +24,8 @@ module ApplicationHelper
       end
       html.html_safe
     end
+
+    def delete_session
+      link_to_if(Rails.env.development?, 'Borrar Session', delete_session_path)
+    end
 end

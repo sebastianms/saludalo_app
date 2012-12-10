@@ -24,6 +24,8 @@ Mejoramigo::Application.routes.draw do
 
   post "/network/add_friend", :to => "networks#add_friend"
 
+  get '/delete_session', :to => 'public#delete_session', :as => 'delete_session'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
