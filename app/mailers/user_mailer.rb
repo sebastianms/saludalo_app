@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
-  default from: "no-reply@mejoramigo.herokuapp.com"
+  default from: "losinsaciables2012@gmail.com"
+
   #layout 'layout' # use awesome.(html|text).erb as the layout
 
   def welcome_email(user)

@@ -17,18 +17,18 @@ Mejoramigo::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  ActionMailer::Base.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => "587",
-    :domain               => "gmail.com",
-    :user_name            => "losinsaciables2012@gmail.com",
-    :password             => "foobar123",
-    :authentication       => "plain",
-#    :enable_starttls_auto => true
-  }
+#   config.action_mailer.raise_delivery_errors = true
+#   config.action_mailer.delivery_method = :send_mail
+#   config.action_mailer.perform_deliveries = true
+#   ActionMailer::Base.smtp_settings = {
+#     :address              => "smtp.gmail.com",
+#     :port                 => "587",
+#     :domain               => "gmail.com",
+#     :user_name            => "losinsaciables2012@gmail.com",
+#     :password             => "foobar123",
+#     :authentication       => "plain",
+# #    :enable_starttls_auto => true
+#   }
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

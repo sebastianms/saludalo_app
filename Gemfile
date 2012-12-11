@@ -7,6 +7,8 @@ gem 'rails', '3.2.9'
 
 gem 'nokogiri'
 gem 'scrapi'
+gem 'aws-sdk'
+
 
 group :development do
   gem 'sqlite3'
